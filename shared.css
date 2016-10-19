@@ -1,0 +1,27 @@
+/* Section visibility */
+
+main section {
+  display: none;
+}
+
+main section.current {
+  display: block;
+}
+
+/* Flex boxes */
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.flex-middle {
+  align-items: center;
+}

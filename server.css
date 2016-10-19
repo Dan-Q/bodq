@@ -1,0 +1,27 @@
+body, section {
+  height: 1080px;
+  width: 3200px;
+}
+
+body {
+  margin: 0;
+  background: black;
+  color: white;
+}
+
+.hw-43 {
+  /* 4x3 heritage window screens */
+  width: 2560px;
+  height: 1080px;
+}
+
+.hw-13 {
+  /* 4x3 heritage window screens */
+  width: 640px;
+  height: 1080px;
+}
+
+#questions {
+  display: none;
+}
+

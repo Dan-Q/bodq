@@ -2,20 +2,42 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Bodleian Christmas Quiz 2016</title>
-  <link rel="stylesheet" type="text/css" href="main.css">
+  <title>Bodleian Christmas Quiz 2016 | Heritage Window</title>
+  <link rel="stylesheet" type="text/css" href="shared.css">
+  <link rel="stylesheet" type="text/css" href="server.css">
 </head>
 <body>
   <main>
     <section id="please-wait" class="current">
-      <
-      <img src="logo.png" alt="Bodleian Libraries" />
+      <div class="flex flex-column flex-center flex-middle">
+        <!-- <img src="logo.png" alt="Bodleian Libraries" /> -->
+      </div>
+    </section>
+
+    <section id="pause">
+      <div class="flex flex-column flex-center flex-middle">
+        <p>Paused</p>
+      </div>
+    </section>
+
+    <section id="play">
+      <div class="flex">
+        <div class="hw-43">
+          hi
+        </div>
+        <div class="hw-13">
+          there
+        </div>
+      </div>
     </section>
   </main>
+
+  <table id="questions"></table>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.1.1/dist/sheetrock.min.js"></script>
+  <script type="text/javascript" src="shared.js"></script>
   <script type="text/javascript" src="server.js"></script>
 </body>
 </html>

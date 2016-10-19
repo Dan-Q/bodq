@@ -1,7 +1,0 @@
-main section {
-  display: none;
-}
-
-main section.current {
-  display: block;
-}

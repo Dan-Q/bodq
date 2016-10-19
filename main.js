@@ -1,11 +1,15 @@
-firebase.initializeApp({
-  apiKey: "AIzaSyAUNM0PTTEnssJMYf7Y2bN_cgKy4oHw5bA",
-  authDomain: "bodq-95961.firebaseapp.com",
-  databaseURL: "https://bodq-95961.firebaseio.com",
-  storageBucket: "bodq-95961.appspot.com",
-  messagingSenderId: "112908799870",
-});
-
 $(function(){
-
+  firebase.auth().signInAnonymously().catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    switchTo('error');
+    $('#error-explanation').text('Error #' + errorCode + ': ' + errorMessage);
+  }).then(function(user) {
+    // User is signed in.
+    var isAnonymous = user.isAnonymous;
+    var uid = user.uid;
+    alert(uid);
+  });
 });
+
