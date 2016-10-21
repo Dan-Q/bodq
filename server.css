@@ -1,12 +1,17 @@
-body, section {
-  height: 1080px;
-  width: 3200px;
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   background: black;
   color: white;
+  font-family: sans-serif;
+}
+
+body, section {
+  height: 1080px;
+  width: 3200px;
 }
 
 .hw-43 {
@@ -21,6 +26,75 @@ body {
   height: 1080px;
 }
 
+/* Play area */
+#game {
+  font-size: 42px;
+}
+
+#timer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 60px;
+  width: 2560px;
+  background: #333333;
+}
+
+#ticker {
+  height: 60px;
+  line-height: 60px;
+  background: #bcbcbc;
+  color: #333333;
+  font-weight: bold;
+  text-align: right;
+  padding-right: 15px;
+}
+
+#question, #answers {
+  position: absolute;
+  top: 25px;
+  width: 1230px;
+  height: 960px;  
+}
+
+#question {
+  left: 25px;
+  font-size: 72px;
+  text-align: center;
+}
+
+#answers {
+  left: 1305px;
+}
+
+.answer {
+  border-width: 8px;
+  border-style: solid;
+  border-radius: 15px;
+}
+
+#answer-1 {
+  border-color: #f65314;
+}
+
+#answer-2 {
+  border-color: #7cbb00;
+}
+
+#answer-3 {
+  border-color: #00a1f1;
+}
+
+#answer-4 {
+  border-color: #ffbb00;
+}
+
+/* Scoreboard */
+#scoreboard {
+  background: #002147;
+}
+
+/* Data <table> with questions in */
 #questions {
   display: none;
 }
