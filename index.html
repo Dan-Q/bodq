@@ -2,22 +2,55 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>Bodleian Christmas Quiz 2016</title>
   <link rel="stylesheet" type="text/css" href="shared.css">
   <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
   <main>
-    <section id="please-wait" class="current">
+    <section id="please-wait" class="current light">
       <div class="flex flex-column flex-center flex-middle">
-        <!-- <img src="logo.png" alt="Bodleian Libraries" /> -->
+        <img src="logo.png" alt="Bodleian Libraries" />
         <p>Please wait</p>
       </div>
     </section>
 
-    <section id="error">
+    <section id="error" class="light">
       <h1>An error occurred</h1>
       <p id="error-explanation"></p>
+    </section>
+
+    <section id="pause" class="light">
+      <div class="flex flex-column flex-center flex-middle">
+        <img src="logo.png" alt="Bodleian Libraries" />
+        <p>Paused</p>
+      </div>
+    </section>
+
+    <section id="play">
+      <div class="flex flex-column flex-center">
+        <div class="play-header flex">
+          <div class="identity"></div>
+          <div class="score-area">
+            Streak:
+            <span class="streak">0</span>
+          </div>
+          <div class="score-area">
+            Best streak:
+            <span class="best-streak">0</span>
+          </div>
+        </div>
+
+        <div class="play-buttons flex flex-center flex-wrap">
+          <button id="button-1" data-answer-id="1">A</button>
+          <button id="button-2" data-answer-id="2">B</button>
+          <button id="button-3" data-answer-id="3">C</button>
+          <button id="button-4" data-answer-id="4">D</button>
+        </div>
+        <!-- <img src="logo.png" alt="Bodleian Libraries" /> -->
+        <p>Please wait</p>
+      </div>
     </section>
   </main>
 

@@ -1,7 +1,18 @@
+/* Remove icky mobile styling and reset things generally */
+
+* {
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: none;
+}
+
 /* Section visibility */
 
 main section {
   display: none;
+  width: 100vw;
 }
 
 main section.current {
@@ -24,4 +35,8 @@ main section.current {
 
 .flex-middle {
   align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }

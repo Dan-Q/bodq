@@ -71,22 +71,51 @@ body, section {
   border-width: 8px;
   border-style: solid;
   border-radius: 15px;
+  margin: 15px 0;
+  padding: 12px;
+}
+
+.answer::before {
+  font-weight: bold;
+  float: left;
+  width: 2em;
+  text-align: center;
 }
 
 #answer-1 {
   border-color: #f65314;
 }
 
+#answer-1::before {
+  content: "A";
+  color: #f65314;
+}
+
 #answer-2 {
   border-color: #7cbb00;
+}
+
+#answer-2::before {
+  content: "B";
+  color: #7cbb00;
 }
 
 #answer-3 {
   border-color: #00a1f1;
 }
 
+#answer-3::before {
+  content: "C";
+  color: #00a1f1;
+}
+
 #answer-4 {
   border-color: #ffbb00;
+}
+
+#answer-4::before {
+  content: "D";
+  color: #ffbb00;
 }
 
 /* Scoreboard */
