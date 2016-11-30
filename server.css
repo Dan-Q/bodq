@@ -135,31 +135,40 @@ body, section {
 #scoreboard {
   background: #002147;
   font-size: 32px;
+  padding: 0 15px;
 }
 
 #scores {
   list-style: none;
   height: 570px;
   overflow: hidden;
+  padding-left: 0;
 }
 
 #scores li {
   display: flex;
   justify-content: space-between;
   min-height: 44px;
+  margin-top: 2px;
 }
 
 #scores li > div {
   margin: 0 2px;
 }
 
+#scores li .pos {
+  opacity: 0.75;
+}
+
 #scores li .pos,
 #scores li .score {
+  min-width: 1.5em;
   text-align: right;
 }
 
 #scores li .name {
-  flex-grow: 1;
+  width: 444px;
+  font-weight: bold;
 }
 
 #scores li .streaking {

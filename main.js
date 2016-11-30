@@ -2,19 +2,19 @@ $(function(){
   // random name generator (leans on seedrandom)
   function randomName(seed){
     var p0 = ['Original', 'Real', 'Unforgettable', 'Magical', 'Christmas', 'Best', 'Seasonal', 'Merry', 'Jolly', 'Secret', 'Bright', 'Cold', 'Exhibited', "Library's"];
-    var p1 = ['Santa', 'Bodley', 'Rudolf', 'Snowman', 'Tree-Topper', 'Season', 'Mr. Frost', 'Duke Humfrey', 'Chief Elf', 'Krampus', 'Grinch', "Bodley's Librarian", 'Donor', 'Researcher', 'Radcliffe', 'Pembroke', 'Gilbert Scott', 'Preservator', 'Scrooge', 'Dasher', 'Blitzen', 'Prancer', 'Claus', 'St. Nick', 'Wenceslas', 'Frosty', 'Jack Skellington', 'Tiny Tim', 'Jacob Marley', 'Kris Kringle', 'Mr. Hanky'];
+    var p1 = ['Santa', 'Bodley', 'Rudolf', 'Snowman', 'Tree-Topper', 'Season', 'Mr. Frost', 'Humfrey', 'Chief Elf', 'Krampus', 'Grinch', "Bodley's Librarian", 'Donor', 'Researcher', 'Radcliffe', 'Pembroke', 'Scrooge', 'Dasher', 'Blitzen', 'Prancer', 'Claus', 'St. Nick', 'Wenceslas', 'Frosty', 'Skellington', 'Tiny Tim', 'Marley', 'Kringle', 'Mr. Hanky'];
     var p2 = ['Little', 'Favourite', 'Christmas', 'Friendly', 'Gift-Wrapped', 'Decorated', 'Snow-Covered', 'Wintery', 'Icy', 'First', 'Delightful', 'Fairy', 'Tinselly', 'Special', 'Wonderful', 'Freezing', 'Stuffed', 'Reader Services', 'Red-nosed', 'Best', 'Delicious', 'Roasted', 'Seasonal', 'Yuletide', 'Singing', 'Festive', 'Jolly', 'Gleeful', 'Gingerbread'];
-    var p3 = ['Helper', 'Reindeer', 'Elf', 'Librarian', 'Archivist', 'Cataloguer', 'Assistant', 'Tree', 'Mince Pie', 'Turkey', 'Carol', 'Sprouts', 'Mistletoe', 'Wonderland', 'Pterodactyl', 'Sleigh', 'Chimney', 'Tale', 'Fireplace', 'Snowman', 'Nutcracker', 'Toy Soldier', 'Gift-Bringer', 'Bell', 'Star', 'Bauble', 'Ghost of Christmas', 'Snowflake', 'Stocking', 'Workshop', 'Bookworm', 'Conservator', 'Reader', 'Visitor', 'Tour Guide', 'Exhibit', 'Publisher', 'Collection', 'Pudding', 'Stocking', 'Bells', 'Cracker', 'Candy Cane', 'Partridge', 'Turtle Dove', 'Wise Man'];
+    var p3 = ['Helper', 'Reindeer', 'Elf', 'Librarian', 'Archivist', 'Cataloguer', 'Assistant', 'Tree', 'Turkey', 'Carol', 'Sprouts', 'Mistletoe', 'Wonderland', 'Pterodactyl', 'Sleigh', 'Chimney', 'Tale', 'Fireplace', 'Snowman', 'Nutcracker', 'Toy Soldier', 'Gift-Bringer', 'Bell', 'Star', 'Bauble', 'Ghost of Christmas', 'Snowflake', 'Stocking', 'Workshop', 'Bookworm', 'Conservator', 'Reader', 'Visitor', 'Tour Guide', 'Exhibit', 'Publisher', 'Collection', 'Pudding', 'Stocking', 'Bells', 'Cracker', 'Candy Cane', 'Partridge', 'Turtle Dove', 'Wise Man'];
     var rng = new Math.seedrandom(seed);
     var type = rng();
-    if(type <= 0.2){
+    if(type <= 0.3){
       return (rng() < 0.5 ? 'The ' : '') + p0[Math.floor(rng()*p0.length)] + ' ' + p1[Math.floor(rng()*p1.length)];
-    } else if (type <= 0.4) {
+    } else if (type <= 0.55) {
       return p1[Math.floor(rng()*p1.length)] + "'s " + p3[Math.floor(rng()*p3.length)];
-    } else if (type <= 0.6) {
-      return (rng() < 0.75 ? 'The ' : '') + p0[Math.floor(rng()*p0.length)] + ' ' + p3[Math.floor(rng()*p3.length)];
-    } else {
-      return p1[Math.floor(rng()*p1.length)] + "'s " + p2[Math.floor(rng()*p2.length)] + ' ' + p3[Math.floor(rng()*p3.length)];
+    } else if (type <= 0.75) {
+      return (rng() < 0.5 ? 'The ' : '') + p0[Math.floor(rng()*p0.length)] + ' ' + p3[Math.floor(rng()*p3.length)];
+    } else if (type <= 0.9) {
+      return p2[Math.floor(rng()*p2.length)] + ' ' + p3[Math.floor(rng()*p3.length)];
     }
   }
 
@@ -30,6 +30,7 @@ $(function(){
     var isAnonymous = user.isAnonymous;
     var uid = user.uid;
     var ref = database.ref('/users/' + uid);
+    var hasEverAnsweredQuestion = false;
     ref.once('value').then(function(snapshot){
       var user = snapshot.val();
       if(!user){
@@ -66,8 +67,8 @@ $(function(){
         $('.streak').text(user.streak);
         $('.best-streak').text(user.bestStreak);
         var lastCorrect = (user.lastCorrect == 'true');
-        $('#showing-answer .last-correct').toggle(lastCorrect);
-        $('#showing-answer .last-incorrect').toggle(!lastCorrect);
+        $('#showing-answer .last-correct').toggle(hasEverAnsweredQuestion && lastCorrect);
+        $('#showing-answer .last-incorrect').toggle(hasEverAnsweredQuestion && !lastCorrect);
         if(typeof(user['msg']) !== 'undefined'){
           ref.child('msg').remove();
           alert(user['msg']);
@@ -97,6 +98,7 @@ $(function(){
       // ---------- USER INTERACTION ---------- //
       // answer buttons
       $('.play-buttons button').on('click', function(){
+        hasEverAnsweredQuestion = true;
         if($(this).hasClass('selected')){
           $(this).removeClass('selected');
           ref.child('answer').set(null);

@@ -54,7 +54,7 @@ $(function(){
 
   /* Draw current question */
   function renderCurrentQuestion(){
-    $('#question').html(currentQuestion.question);
+    $('#question').html('<p>' + currentQuestion.question + '</p>');
     $('#answer-1').html(currentQuestion.answers[0]);
     $('#answer-2').html(currentQuestion.answers[1]);
     $('#answer-3').html(currentQuestion.answers[2]);
