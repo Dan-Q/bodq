@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>Bodleian Christmas Quiz 2016</title>
   <link rel="stylesheet" type="text/css" href="shared.css">
   <link rel="stylesheet" type="text/css" href="main.css">
@@ -26,6 +27,32 @@
       <p class="field">
         <label for="question-duration">Question duration:</label>
         <input id="question-duration" data-firebase="constants/question-duration" type="numeric" />
+      </p>
+      <p class="field">
+        <label for="answer-duration">Answer duration:</label>
+        <input id="answer-duration" data-firebase="constants/answer-duration" type="numeric" />
+      </p>
+      <p class="field">
+        <label for="scores-limit">Scores limit:</label>
+        <input id="scores-limit" data-firebase="constants/scores-limit" type="numeric" />
+      </p>
+      <hr />
+      <p>
+        <button data-command="next-question">Next question</button>
+      </p>
+      <hr />
+      <p>
+        <select id="user">
+          <option value="all">All users</option>
+        </select>
+        <br />
+        <button id="send-message">Msg</button>
+        <button id="change-name">Rename</button>
+        <button id="kill">Kill</button>
+      </p>
+      <hr />
+      <p>
+        <button id="purge">Purge abandoned accounts (1 hour unused)</button>
       </p>
     </section>
   </main>

@@ -15,14 +15,15 @@
     </section>
 
     <section id="pause">
-      <div class="flex flex-column flex-center flex-middle">
-        <p>Paused</p>
+      <canvas id="snow"></canvas>
+      <div id="pause-content" class="flex flex-column flex-center flex-middle">
+        <img src="logo-inverted.jpg" alt="Bodleian Libraries" style="max-height: 1000px">
       </div>
     </section>
 
     <section id="finished">
       <div class="flex flex-column flex-center flex-middle">
-        <p>Finished</p>
+        <!-- this page intentionally left blank -->
       </div>
     </section>
 
@@ -37,9 +38,20 @@
             <div id="answer-3" class="answer"></div>
             <div id="answer-4" class="answer"></div>
           </div>
+          <div id="flavour-text"></div>
         </div>
         <div id="scoreboard" class="hw-13">
-          scoreboard
+          <h2>Top Scores</h2>
+          <ol id="scores"></ol>
+          <h2>How to Play</h2>
+          <p>
+            Point your mobile phone or tablet web browser at
+            <strong>bit.ly/bodxmas</strong> to play.
+          </p>
+          <p>
+            Your score is your <em>longest continuous streak</em>
+            of questions correctly answered.
+          </p>
         </div>
       </div>
     </section>

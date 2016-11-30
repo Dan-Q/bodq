@@ -7,6 +7,7 @@ body {
   background: black;
   color: white;
   font-family: sans-serif;
+  overflow: hidden;
 }
 
 body, section {
@@ -67,6 +68,14 @@ body, section {
   left: 1305px;
 }
 
+#flavour-text {
+  position: absolute;
+  top: 829px;
+  left: 100px;
+  width: 2400px;
+  text-align: center;
+}
+
 .answer {
   border-width: 8px;
   border-style: solid;
@@ -118,9 +127,43 @@ body, section {
   color: #ffbb00;
 }
 
+#flavour-text {
+  opacity: 0;
+}
+
 /* Scoreboard */
 #scoreboard {
   background: #002147;
+  font-size: 32px;
+}
+
+#scores {
+  list-style: none;
+  height: 570px;
+  overflow: hidden;
+}
+
+#scores li {
+  display: flex;
+  justify-content: space-between;
+  min-height: 44px;
+}
+
+#scores li > div {
+  margin: 0 2px;
+}
+
+#scores li .pos,
+#scores li .score {
+  text-align: right;
+}
+
+#scores li .name {
+  flex-grow: 1;
+}
+
+#scores li .streaking {
+  width: 32px;
 }
 
 /* Data <table> with questions in */
@@ -128,3 +171,33 @@ body, section {
   display: none;
 }
 
+/* Showing answer mode */
+
+body.showing-answer #timer {
+  display: none;
+}
+
+body.showing-answer #flavour-text {
+  opacity: 1;
+}
+
+body.showing-answer .answer {
+  opacity: 0.25;
+}
+
+body.showing-answer .answer.correct {
+  opacity: 1;
+}
+
+/* Snowfall/pause page */
+
+#snow {
+  position:absolute;
+  top:0;
+  left:0
+}
+
+#pause-content {
+  height: 100%;
+  font-size: 400%;
+}

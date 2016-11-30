@@ -1,10 +1,10 @@
 $(function(){
   // random name generator (leans on seedrandom)
   function randomName(seed){
-    var p0 = ['Original', 'Real', 'Unforgettable', 'Magical', 'Christmas', 'Best', 'Seasonal', 'Merry', 'Jolly', 'Secret', 'Bright', 'Cold'];
-    var p1 = ['Santa', 'Bodley', 'Rudolf', 'Snowman', 'Tree-Topper', 'Season', 'Mr. Frost', 'Duke Humfrey', 'Chief Elf', 'Krampus', 'Grinch', "Bodley's Librarian", 'Donor'];
-    var p2 = ['Little', 'Favourite', 'Christmas', 'Friendly', 'Gift-Wrapped', 'Decorated', 'Snow-Covered', 'Wintery', 'Icy', 'First', 'Delightful', 'Fairy', 'Tinselly', 'Special', 'Wonderful', 'Freezing', 'Stuffed', 'Reader Services'];
-    var p3 = ['Helper', 'Reindeer', 'Elf', 'Librarian', 'Archivist', 'Cataloguer', 'Assistant', 'Tree', 'Mince Pie', 'Turkey', 'Carol', 'Sprouts', 'Mistletoe', 'Wonderland', 'Pterodactyl', 'Sleigh', 'Chimney', 'Tale', 'Fireplace', 'Snowman', 'Nutcracker', 'Toy Soldier', 'Gift-Bringer', 'Bell', 'Star', 'Bauble', 'Ghost of Christmas Past', 'Snowflake', 'Stocking', 'Workshop', 'Bookworm', 'Conservator', 'Reader'];
+    var p0 = ['Original', 'Real', 'Unforgettable', 'Magical', 'Christmas', 'Best', 'Seasonal', 'Merry', 'Jolly', 'Secret', 'Bright', 'Cold', 'Exhibited', "Library's"];
+    var p1 = ['Santa', 'Bodley', 'Rudolf', 'Snowman', 'Tree-Topper', 'Season', 'Mr. Frost', 'Duke Humfrey', 'Chief Elf', 'Krampus', 'Grinch', "Bodley's Librarian", 'Donor', 'Researcher', 'Radcliffe', 'Pembroke', 'Gilbert Scott', 'Preservator', 'Scrooge', 'Dasher', 'Blitzen', 'Prancer', 'Claus', 'St. Nick', 'Wenceslas', 'Frosty', 'Jack Skellington', 'Tiny Tim', 'Jacob Marley', 'Kris Kringle', 'Mr. Hanky'];
+    var p2 = ['Little', 'Favourite', 'Christmas', 'Friendly', 'Gift-Wrapped', 'Decorated', 'Snow-Covered', 'Wintery', 'Icy', 'First', 'Delightful', 'Fairy', 'Tinselly', 'Special', 'Wonderful', 'Freezing', 'Stuffed', 'Reader Services', 'Red-nosed', 'Best', 'Delicious', 'Roasted', 'Seasonal', 'Yuletide', 'Singing', 'Festive', 'Jolly', 'Gleeful', 'Gingerbread'];
+    var p3 = ['Helper', 'Reindeer', 'Elf', 'Librarian', 'Archivist', 'Cataloguer', 'Assistant', 'Tree', 'Mince Pie', 'Turkey', 'Carol', 'Sprouts', 'Mistletoe', 'Wonderland', 'Pterodactyl', 'Sleigh', 'Chimney', 'Tale', 'Fireplace', 'Snowman', 'Nutcracker', 'Toy Soldier', 'Gift-Bringer', 'Bell', 'Star', 'Bauble', 'Ghost of Christmas', 'Snowflake', 'Stocking', 'Workshop', 'Bookworm', 'Conservator', 'Reader', 'Visitor', 'Tour Guide', 'Exhibit', 'Publisher', 'Collection', 'Pudding', 'Stocking', 'Bells', 'Cracker', 'Candy Cane', 'Partridge', 'Turtle Dove', 'Wise Man'];
     var rng = new Math.seedrandom(seed);
     var type = rng();
     if(type <= 0.2){
@@ -42,19 +42,36 @@ $(function(){
             pass: 0,
             fiftyFifty: 0,
             shield: 0
-          }
+          },
+          streaking: 'false'
         });
       }
 
       // ---------- SERVER INTERACTION ---------- //
       // keep-alive
-      setInterval(function(){
+      ref.child('seen-at').set(firebase.database.ServerValue.TIMESTAMP);
+      var keepAlive = setInterval(function(){
         ref.child('seen-at').set(firebase.database.ServerValue.TIMESTAMP);
-      }, 1000 * 10);
+      }, 1000 * 30);
       // watch for subsequent changes
       ref.on('value', function(snapshot){
         var user = snapshot.val();
+        if(user === null || typeof(user['name']) === 'undefined'){
+          switchTo('error');
+          $('#error-explanation').html('Your session timed out. Refresh the page to play again.<br /><br />(Because your score is your <em>longest-streak</em>, you can easily get back onto the scoreboard!)');
+          clearInterval(keepAlive);
+          return;
+        }
         $('.identity').text(user.name);
+        $('.streak').text(user.streak);
+        $('.best-streak').text(user.bestStreak);
+        var lastCorrect = (user.lastCorrect == 'true');
+        $('#showing-answer .last-correct').toggle(lastCorrect);
+        $('#showing-answer .last-incorrect').toggle(!lastCorrect);
+        if(typeof(user['msg']) !== 'undefined'){
+          ref.child('msg').remove();
+          alert(user['msg']);
+        }
       });
       // watch for game state change
       database.ref('state').on('value', function(snapshot){
@@ -67,6 +84,14 @@ $(function(){
             switchTo('play');
             break;
         }
+      });
+      // Showing answer mode change
+      database.ref('showing-answer').on('value', function(snapshot){
+        showingAnswer = (snapshot.val() == 'true');
+        if(showingAnswer){
+          $('.play-buttons button').removeClass('selected'); // unselect all buttons
+        }
+        $('body').toggleClass('showing-answer', showingAnswer);
       });
 
       // ---------- USER INTERACTION ---------- //

@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Bodleian Christmas Quiz 2016</title>
   <link rel="stylesheet" type="text/css" href="shared.css">
   <link rel="stylesheet" type="text/css" href="main.css">
@@ -12,32 +12,41 @@
     <section id="please-wait" class="current light">
       <div class="flex flex-column flex-center flex-middle">
         <img src="logo.png" alt="Bodleian Libraries" />
-        <p>Please wait</p>
+        <h2>Please wait</h2>
       </div>
     </section>
 
     <section id="error" class="light">
-      <h1>An error occurred</h1>
+      <h2>An error occurred</h2>
       <p id="error-explanation"></p>
     </section>
 
     <section id="pause" class="light">
       <div class="flex flex-column flex-center flex-middle">
         <img src="logo.png" alt="Bodleian Libraries" />
-        <p>Paused</p>
+        <h2>Game paused</h2>
+        <p>
+          Pay attention to the big screen: more questions are coming.
+          <br />
+          <br />
+          <strong>Tip:</strong> Your score is your
+          <em>longest consecutive streak</em> of correct answers.
+        </p>
       </div>
     </section>
 
     <section id="play">
       <div class="flex flex-column flex-center">
-        <div class="play-header flex">
+        <div class="play-header flex flex-space-between flex-middle">
           <div class="identity"></div>
           <div class="score-area">
             Streak:
+            <br />
             <span class="streak">0</span>
           </div>
           <div class="score-area">
-            Best streak:
+            Score:
+            <br />
             <span class="best-streak">0</span>
           </div>
         </div>
@@ -50,6 +59,33 @@
         </div>
 
         <!-- todo - lifelifes etc. -->
+      </div>
+
+      <div id="showing-answer">
+        <div class="last-correct">
+          <h2>
+            You got that one right. Hurrah!
+          </h2>
+          <p>
+            You've got <strong class="streak">0</strong> right in a row,
+            and your best streak is <strong class="best-streak">0</strong>.
+          </p>
+        </div>
+        <div class="last-incorrect">
+          <h2>
+            You didn't get that one right. Hard luck!
+          </h2>
+          <p>
+            Your streak has been reset. Your best streak remains at
+            <strong class="best-streak">0</strong>.
+          </p>
+        </div>
+        <p>
+          Your best streak is used as your score on the scoreboard.
+        </p>
+        <p>
+          The next question will be up in a few seconds!
+        </p>
       </div>
     </section>
   </main>

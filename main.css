@@ -17,16 +17,26 @@ section.light {
 .play-header {
   background: #bcbcbc;
   margin-bottom: 16px;
-  padding: 0;
+  padding: 4px 0;
+}
+
+.play-header > div {
+  margin: 0 4px;
+}
+
+.score-area {
+  text-align: center;
 }
 
 .play-buttons button {
-  width: 32vw;
-  height: 32vw;
-  font-size: 22vw;
-  border-radius: 5vw;
-  margin: 2vw;
-  border: 3vw solid transparent;
+  width: 102px;
+  height: 102px;
+  font-size: 70px;
+  border-radius: 16px;
+  margin: 6px;
+  border: 10px solid transparent;
+  text-align: center;
+  padding: 0;
 }
 
 .play-buttons button.selected {
@@ -47,4 +57,21 @@ section.light {
 
 #button-4 {
   background-color: #ffbb00;
+}
+
+/* Showing answer mode */
+
+#showing-answer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: none;
+  padding: 15px;
+}
+
+body.showing-answer #showing-answer {
+  display: block;
 }
