@@ -67,7 +67,7 @@ $(function(){
   /* Draw countdown timer */
   function updateCountdownTimer(){
     var qTimeHuman = Math.ceil(qTime / 100).toString();
-    var qTimePc = (qTime / QUESTION_DURATION) * 100;
+    var qTimePc = qTime / QUESTION_DURATION * 100;
     if(qTime < 300) qTimeHuman = '';
     $('#ticker').width(qTimePc + '%').text(qTimeHuman);
   }
@@ -163,7 +163,7 @@ $(function(){
       return(diff);
     });
     html = '';
-    for(var i = 0; i < (scores.length) && (i < 10); i++){
+    for(var i = 0; i < (scores.length) && (i < SCORES_LIMIT); i++){
       var up = '&nbsp;';
       if(scores[i].streaking == 'true') up = '<img src="up.png" style="height: 32px;" alt="^" />';
       html = html + '<li><div class="pos">' + (i+1) + '.</div><div class="name">' + scores[i].name + '</div> <div class="score">' + scores[i].bestStreak + '</div> <div class="streaking">' + up + '</div></li>';

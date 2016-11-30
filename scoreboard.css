@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  background: #002147;;
+  color: white;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+body, section {
+  height: 1920px;
+  width: 1080px;
+}
+
+h2 {
+  text-align: center;
+}
+
+/* Scoreboard */
+#scoreboard {
+  font-size: 32px;
+  padding: 0 15px;
+}
+
+#scores {
+  list-style: none;
+  overflow: hidden;
+  padding-left: 0;
+}
+
+#scores li {
+  display: flex;
+  justify-content: space-between;
+  min-height: 44px;
+  margin-top: 2px;
+}
+
+#scores li > div {
+  margin: 0 2px;
+}
+
+#scores li .pos {
+  opacity: 0.75;
+}
+
+#scores li .pos,
+#scores li .score {
+  min-width: 1.5em;
+  text-align: right;
+}
+
+#scores li .name {
+  width: 790px;
+  font-weight: bold;
+}
+
+#scores li .streaking {
+  width: 32px;
+}
+
+/* How to Play */
+
+#how-to-play {
+    padding: 15px 25px;
+    font-size: 46px;
+}
+
+#how-to-play p img {
+  width: 100%;
+}
+
+.button {
+  display: inline-block;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  text-align: center;
+  color: black;
+}
+
+.button-a {
+  background-color: #f65314;
+}
+
+.button-b {
+  background-color: #7cbb00;
+}
+
+.button-c {
+  background-color: #00a1f1;
+}
+
+.button-d {
+  background-color: #ffbb00;
+}

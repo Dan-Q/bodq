@@ -44,3 +44,7 @@ main section.current {
 .flex-wrap {
   flex-wrap: wrap;
 }
+
+.url {
+  color: gold;
+}

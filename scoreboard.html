@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Bodleian Christmas Quiz 2016 | Scoreboard</title>
+  <link rel="stylesheet" type="text/css" href="shared.css">
+  <link rel="stylesheet" type="text/css" href="scoreboard.css">
+</head>
+<body>
+  <main>
+    <section id="please-wait" class="current">
+      <div class="flex flex-column flex-center flex-middle">
+        <!-- <img src="logo.png" alt="Bodleian Libraries" /> -->
+      </div>
+    </section>
+
+    <section id="scoreboard">
+      <h2>Christmas Quiz - Top Scores</h2>
+      <p style="text-align: center;">
+        To play, go to <strong class="url">bit.ly&thinsp;/&thinsp;bodxmas</strong>
+      </p>
+      <ol id="scores"></ol>
+    </section>
+
+    <section id="how-to-play">
+      <h2>Christmas Quiz - How To Play</h2>
+      <p>
+        This game is played with your <strong>smartphone</strong> or <strong>tablet</strong>
+        and the <strong>Heritage Window</strong> (the large screen at the back of Blackwell Hall).
+      </p>
+      <p>
+        <img src="screens.jpg" alt="Screens" />
+      </p>
+      <p>
+        To play, open your web browser (we suggest you connect to WiFi) and go to:
+      </p>
+      <h2 class="url">bit.ly&thinsp;/&thinsp;bodxmas</h2>
+      <p>
+        As each question comes up on the <strong>Heritage Window</strong>, press the corresponding
+        button on your phone to answer it - <span class="button button-a">A</span>,
+        <span class="button button-b">B</span>, <span class="button button-c">C</span>, or
+        <span class="button button-d">D</span>.
+      </p>
+      <p>
+        Your <strong>score</strong> is your <em>longest consecutive streak</em> of correct answers.
+        Scores appear on scoreboards around the room. Drop in or out whenever you like, and see
+        who's got the highest score at the end of the party!
+      </p>
+    </section>
+  </main>
+
+  <table id="questions"></table>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.0/seedrandom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.1.1/dist/sheetrock.min.js"></script>
+  <script type="text/javascript" src="shared.js"></script>
+  <script type="text/javascript" src="scoreboard.js"></script>
+</body>
+</html>
