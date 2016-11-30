@@ -108,6 +108,18 @@ $(function(){
         $(this).addClass('selected');
         ref.child('answer').set($(this).data('answer-id'));
       });
+
+      // change name
+      $('#change-name').on('click', function(){
+        var currentName = $('.identity').text();
+        var newName = String(prompt('What new name would you like to have?', currentName));
+        if(newName == '' || newName == 'null' || newName == currentName) return;
+        if(newName.replace(/ /g, '').length < 2) {
+          alert('Your new name must be at least 2 characters in length. Change rejected.');
+          return;
+        }
+        ref.child('name').set(newName);
+      });
     });
   });
 });

@@ -59,6 +59,19 @@ section.light {
   background-color: #ffbb00;
 }
 
+/* Meta buttons */
+
+.meta-controls {
+  margin: 15px 15px;
+  border-top: 1px solid gray;
+  padding-top: 15px;
+}
+
+.meta-controls button {
+  padding: 5px;
+  font-size: 18px;
+}
+
 /* Showing answer mode */
 
 #showing-answer {
