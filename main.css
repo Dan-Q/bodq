@@ -88,3 +88,9 @@ section.light {
 body.showing-answer #showing-answer {
   display: block;
 }
+
+/* Pause screen */
+
+#pause h2, #pause p {
+  margin: 8px 0;
+}

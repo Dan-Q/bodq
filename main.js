@@ -110,8 +110,8 @@ $(function(){
       });
 
       // change name
-      $('#change-name').on('click', function(){
-        var currentName = $('.identity').text();
+      $('.change-name').on('click', function(){
+        var currentName = $('.identity').first().text();
         var newName = String(prompt('What new name would you like to have?', currentName));
         if(newName == '' || newName == 'null' || newName == currentName) return;
         if(newName.replace(/ /g, '').length < 2) {
